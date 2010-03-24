@@ -1,0 +1,73 @@
+<!DOCTYPE html >
+
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+  <title>jQuery Label Overlay Test</title>
+
+	<style type="text/css">
+
+		form div {
+			position: relative;
+			overflow: auto;
+		}
+
+		form label {
+			width: 10em;
+			float: left;
+			clear: none;
+		}
+
+		.js-enabled form label {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: auto;
+			color: #333;
+		}
+
+		form input {
+			float: left;
+			clear: none;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<h1>jQuery Label Overlay Test</h1>
+
+	<form action="#">
+
+		<div>
+			<label for="username">Username</label>
+			<input type="text" name="username" id="username">
+		</div>
+
+		<div>
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password">
+		</div>
+
+		<div>
+			<label for="foo">Pre-filled</label>
+			<input type="text" name="foo" id="foo" value="bar">
+		</div>
+
+	</form>
+
+
+	<script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="jquery-labeloverlay-0.0.1.js"></script>
+	<script type="text/javascript">
+
+		$(function(){
+			$('body').addClass('js-enabled');
+			$('form input').labelOverlay();
+		});
+	
+	</script>
+
+</body>
+</html>

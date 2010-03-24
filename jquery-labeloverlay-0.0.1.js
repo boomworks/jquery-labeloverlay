@@ -14,25 +14,17 @@
 		this.each(function(){
 
 			var $this = $(this),
-					$lbl = $(this).siblings(options.labelSelector)
+					$lbl = $this.siblings(options.labelSelector)
 			;
 
-			// Can this be refactored some more?
-			$this.focus(function(){
-				fade($lbl, $this.val(), options.focusFadeSpeed, options.opacity);
-			})
-			.keyup(function(){
-				fade($lbl, $this.val(), options.typeFadeSpeed, options.opacity);
-			})
-			.change(function(){
-				fade($lbl, $this.val(), options.blurFadeSpeed, options.startOpacity);
-			})
-			.blur(function(){
-				fade($lbl, $this.val(), options.blurFadeSpeed, options.startOpacity);
-			});
-
-			// Check field values on load
-			fade($lbl, $this.val(), options.blurFadeSpeed, options.startOpacity);
+			$this
+				.bind('now focus keyup change blur', function(e){
+					var speed = e.type === 'focus' ? options.focusFadeSpeed : e.type === 'keyup' ? options.typeFadeSpeed : options.blurFadeSpeed,
+							opacity = e.type === 'focus' || e.type === 'keyup' ? options.opacity : options.startOpacity;
+					fade($lbl, $this.val(), speed, opacity);
+				})
+				.trigger('now')
+			;
 
 		});
 
@@ -40,7 +32,7 @@
 	};
 
 	fade = function($obj, val, speed, opacity){
-		$.trim(val) == '' ? $obj.show().fadeTo(speed, opacity) : $obj.fadeTo(0, 0).hide();
+		$.trim(val) === '' ? $obj.show().fadeTo(speed, opacity) : $obj.fadeTo(0, 0).hide();
 	};
 
 	$.fn.labelOverlay.defaults = {

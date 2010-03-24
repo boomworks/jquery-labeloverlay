@@ -1,4 +1,5 @@
-/*!
+/**
+* @license
 * jQuery Label Overlay
 *
 * Copyright (c) 2010 Boomworks <http://boomworks.com.au/>
@@ -23,6 +24,7 @@
 			$this
 				.bind('now focus keyup change blur', function(e){
 					// Choose speed & opacity based on event type
+					// TODO: this is pretty unreadable, use switch?
 					var speed = e.type === 'focus' ? options.focusFadeSpeed : e.type === 'keyup' ? options.typeFadeSpeed : options.blurFadeSpeed,
 							opacity = e.type === 'focus' || e.type === 'keyup' ? options.opacity : options.startOpacity;
 					// Do the fade

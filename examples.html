@@ -1,0 +1,107 @@
+<!DOCTYPE html >
+
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+  <title>jQuery Label Overlay Examples</title>
+
+	<!--[if lte IE 8]><script type="text/javascript" src="lib/html5-shiv.js"></script><![endif]-->
+
+	<style type="text/css">
+
+		body {
+			font-family: sans-serif;
+		}
+
+		form div {
+			position: relative;
+			overflow: auto;
+		}
+
+		form label {
+			width: 10em;
+			float: left;
+			clear: none;
+		}
+
+		.js-enabled form label {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: auto;
+			color: #333;
+			padding: 2px 4px;
+		}
+
+		form input {
+			float: left;
+			clear: none;
+			font-family: sans-serif;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<h1>jQuery Label Overlay Examples</h1>
+
+	<form action="#">
+		<fieldset id="example-one">
+			<legend>Default options</legend>
+			<div>
+				<label for="username-1">Username</label>
+				<input type="text" name="username" id="username-1">
+			</div>
+			<div>
+				<label for="password-1">Password</label>
+				<input type="password" name="password" id="password-1">
+			</div>
+		</fieldset>
+		<fieldset id="example-two">
+			<legend>Overriding default options</legend>
+			<div>
+				<label for="username-2">Username</label>
+				<input type="text" name="username" id="username-2">
+			</div>
+			<div>
+				<label for="password-2">Password</label>
+				<input type="password" name="password" id="password-2">
+			</div>
+		</fieldset>
+		<fieldset id="example-three">
+			<legend>User-specified options</legend>
+			<div>
+				<label for="username-3">Username</label>
+				<input type="text" name="username" id="username-3">
+			</div>
+			<div>
+				<label for="password-3">Password</label>
+				<input type="password" name="password" id="password-3">
+			</div>
+		</fieldset>
+	</form>
+
+
+	<script type="text/javascript" src="lib/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="jquery-labeloverlay-0.0.1.js"></script>
+	<script type="text/javascript">
+
+		$(function(){
+			$('body').addClass('js-enabled');
+
+			// Default options
+			$('input[type=text], input[type=password]', '#example-one').labelOverlay();
+
+			// Overriding default options
+			$.fn.labelOverlay.defaults.opacity = 0.3;
+			$('input[type=text], input[type=password]', '#example-two').labelOverlay();
+
+			// User-specified options
+			$('input[type=text], input[type=password]', '#example-three').labelOverlay({focusFadeSpeed: 1000});
+		});
+	
+	</script>
+
+</body>
+</html>

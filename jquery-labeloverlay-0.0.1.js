@@ -24,9 +24,22 @@
 			$this
 				.bind('now focus keyup change blur', function(e){
 					// Choose speed & opacity based on event type
-					// TODO: this is pretty unreadable, use switch?
-					var speed = e.type === 'focus' ? options.focusFadeSpeed : e.type === 'keyup' ? options.typeFadeSpeed : options.blurFadeSpeed,
-							opacity = e.type === 'focus' || e.type === 'keyup' ? options.opacity : options.startOpacity;
+					var speed = options.typeFadeSpeed, opacity = options.opacity;
+					switch(e.type){
+					    case 'keyup':
+						break;
+
+					    case 'focus':
+						speed = options.focusFadeSpeed;
+						break;
+
+					    default:
+						speed = options.blurFadeSpeed;
+						opacity = options.startOpacity;
+						break;
+					}
+
+
 					// Do the fade
 					fade($lbl, $this.val(), speed, opacity);
 				})

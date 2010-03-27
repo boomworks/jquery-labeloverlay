@@ -20,7 +20,6 @@
 			;
 
 			// Bind various events to target field
-			// TODO: will live() work here? do we need it?
 			$this
 				.bind('now focus keyup change blur', function(e){
 					// Choose speed & opacity based on event type

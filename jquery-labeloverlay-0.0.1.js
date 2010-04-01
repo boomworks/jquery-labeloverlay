@@ -19,6 +19,11 @@
 					$lbl = $this.siblings(options.labelSelector)
 			;
 
+			// Bind events to label element (needed for when 'label' isn't realy a label element)
+			$lbl.bind('click', function(){
+				$this.focus();
+			});
+
 			// Bind various events to target field
 			$this
 				.bind('now focus keyup change blur', function(e){

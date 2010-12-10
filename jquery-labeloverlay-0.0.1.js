@@ -16,13 +16,19 @@
 		this.each(function(){
 
 			var $this = $(this),
-					$lbl = $this.siblings(options.labelSelector)
+					$lbl = $($this.next(options.labelSelector)[0])
 			;
 
 			// Bind events to label element (needed for when 'label' isn't realy a label element)
 			$lbl.bind('click', function(){
 				$this.focus();
 			});
+
+      // Position label over field
+      $lbl.css({
+        top: $this.position().top,
+        left: $this.position().left
+      });
 
 			// Bind various events to target field
 			$this

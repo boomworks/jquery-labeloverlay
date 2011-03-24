@@ -16,7 +16,7 @@
 		this.each(function(){
 
 			var $this = $(this),
-					$lbl = $($this.next(options.labelSelector)[0])
+					$lbl = $($this.siblings(options.labelSelector)[0])
 			;
 
 			// Bind events to label element (needed for when 'label' isn't realy a label element)
